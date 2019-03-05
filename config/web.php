@@ -1,5 +1,12 @@
 <?php
 
+use app\cart\storage\SessionStorage;
+
+Yii::$container->setSingleton('app\cart\ShoppingCart');
+Yii::$container->set('app\cart\storage\StorageInterface', function () {
+    return new SessionStorage(Yii::$app->session, 'primary-cart');
+});
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
@@ -9,7 +16,7 @@ $config = [
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
         'request' => [
