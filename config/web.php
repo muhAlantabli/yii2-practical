@@ -54,8 +54,11 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-//            'rules' => [
-//            ],
+           'rules' => [
+               'home' => 'test/index',
+               '<alias:about>' => 'test/page',
+               'page/<alias>' => 'test/page',
+           ],
         ],
 
     ],
