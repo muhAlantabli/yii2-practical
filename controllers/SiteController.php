@@ -2,8 +2,11 @@
 
 namespace app\controllers;
 
+use app\models\Article;
 use Yii;
+use yii\db\ActiveRecord;
 use yii\filters\AccessControl;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
@@ -124,5 +127,29 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+
+    public function actionTest()
+    {
+        $article = new Article();
+        $article->name = 'My Birthday is coming. Oh Crap! The clock is ticking!';
+        $article->description = 'I am angry! very angry, mate.';
+
+        // $event is an object of yii\base\Event or its subclasses
+        $article->on(Article::EVENT_MY_CUSTOM_EVENT, function ($event) {
+            Yii::$app->mailer->compose()
+                ->setFrom('muhalantabli@jourrapide.com')
+                ->setTo('muhalantabli@gmail.com')
+                ->setSubject($event->sender->name)
+                ->setTextBody($event->sender->description)
+                ->send();
+
+            echo "Emails has been sent.\n";
+        });
+
+        if ($article->save()) {
+            $article->trigger(Article::EVENT_MY_CUSTOM_EVENT);
+        }
     }
 }
