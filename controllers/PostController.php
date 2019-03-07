@@ -7,20 +7,32 @@ use yii\web\Controller;
 
 class PostController extends Controller
 {
-    public function actionView($alias)
+
+    public function actions()
     {
-        return $this->renderContent(Html::tag('h2',
-            'Showing post with alias ' . Html::encode($alias)
-        ));
+        return [
+            'index' => ['class' => 'app\actions\IndexAction', 'modelClass' => 'app\models\Post'],
+            'view' => ['class' => 'app\actions\ViewAction', 'modelClass' => 'app\models\Post'],
+            'delete' => ['class' => 'app\actions\DeleteAction', 'modelClass' => 'app\models\Post'],
+            'create' => ['class' => 'app\actions\CreateAction', 'modelClass' => 'app\models\Post'],
+        ];
     }
 
-    public function actionIndex($type = 'posts', $order = 'DESC')
-    {
-        return $this->renderContent(Html::tag('h2',
-            'Showing ' . Html::encode($type) . ' ordered ' .
-            Html::encode($order)
-        ));
-    }
+
+//    public function actionView($alias)
+//    {
+//        return $this->renderContent(Html::tag('h2',
+//            'Showing post with alias ' . Html::encode($alias)
+//        ));
+//    }
+
+//    public function actionIndex($type = 'posts', $order = 'DESC')
+//    {
+//        return $this->renderContent(Html::tag('h2',
+//            'Showing ' . Html::encode($type) . ' ordered ' .
+//            Html::encode($order)
+//        ));
+//    }
 
     public function actionHello($name)
     {

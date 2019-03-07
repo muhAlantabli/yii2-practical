@@ -54,15 +54,15 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-           'rules' => [
-               'home' => 'test/index',
-               '<alias:about>' => 'test/page',
-               'page/<alias>' => 'test/page',
-               'post/<alias:[a-z]+>' => 'post/view',
-               '<type:(archive|posts)>' => 'post/index',
-               '<type:(archive|posts)>/<order:(DESC|ASC)>' => 'post/index',
-               'sayhello/<name>' => 'post/hello'
-           ],
+//           'rules' => [
+//               'home' => 'test/index',
+//               '<alias:about>' => 'test/page',
+//               'page/<alias>' => 'test/page',
+//               'post/<alias:[a-z]+>' => 'post/view',
+//               '<type:(archive|posts)>' => 'post/index',
+//               '<type:(archive|posts)>/<order:(DESC|ASC)>' => 'post/index',
+//               'sayhello/<name>' => 'post/hello'
+//           ],
         ],
 
     ],

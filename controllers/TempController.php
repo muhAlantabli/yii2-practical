@@ -17,7 +17,7 @@ class TempController extends BaseController
     public function actions()
     {
         return ArrayHelper::merge(parent::actions(), [
-           'page' => ['class' => 'yii\web\ViewAction', 'defaultView' => 'page']
+           'page' => ['class' => 'yii\web\ViewAction', 'defaultView' => 'page', 'viewPrefix' => '']
         ]);
     }
 
