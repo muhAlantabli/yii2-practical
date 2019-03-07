@@ -6,7 +6,7 @@ use yii\helpers\Url;
 
 ?>
 
-<h1>Posts</h1>
+<h1><?= $this->context->pageTitle ?></h1>
 <?= Html::a('Create Post', ['create'], ['class' => 'btn btn-success']) ?>
 
 <?php foreach($models as $model) : ?>

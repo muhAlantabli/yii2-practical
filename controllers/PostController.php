@@ -8,7 +8,7 @@ use yii\web\Controller;
 
 class PostController extends Controller
 {
-
+    public $pageTitle = 'Posts';
     public function actions()
     {
         return [
