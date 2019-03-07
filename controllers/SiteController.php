@@ -152,4 +152,10 @@ class SiteController extends Controller
             $article->trigger(Article::EVENT_MY_CUSTOM_EVENT);
         }
     }
+
+
+    public function actionBlocks()
+    {
+        return $this->render('blocks');
+    }
 }

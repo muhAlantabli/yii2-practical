@@ -65,13 +65,16 @@ AppAsset::register($this);
         ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
+        <?php if (!empty($this->blocks['content'])): ?>
+        <p class="pull-left"><?= $this->blocks['content'] ?></p>
+        <?php endif; ?>
     </div>
 </div>
 
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
+        
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
