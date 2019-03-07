@@ -2,11 +2,21 @@
 
 namespace app\controllers;
 
+use app\components\CustomFilter;
 use yii\web\Controller;
 use yii\helpers\Html;
 
 class TestController extends Controller
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => CustomFilter::class,
+            ],
+        ];
+    }
+
     public function actionIndex()
     {
         return $this->renderContent(Html::tag('h2', 'Index action'));
