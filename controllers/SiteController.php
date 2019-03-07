@@ -158,4 +158,16 @@ class SiteController extends Controller
     {
         return $this->render('blocks');
     }
+
+    public function actionBlog()
+    {
+        $this->layout = 'blog';
+        return $this->render('content');
+    }
+
+    public function actionArticle()
+    {
+        $this->layout = 'article';
+        return $this->render('content');
+    }
 }
