@@ -9,6 +9,8 @@ namespace app\commands;
 
 use yii\console\Controller;
 use yii\console\ExitCode;
+use yii\helpers\FileHelper;
+use yii\helpers\Inflector;
 
 /**
  * This command echoes the first argument that you have entered.
