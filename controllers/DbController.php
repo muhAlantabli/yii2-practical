@@ -10,6 +10,7 @@ namespace app\controllers;
 
 
 use app\models\Actor;
+use app\models\Post;
 use yii\db\Query;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -121,5 +122,28 @@ class DbController extends Controller
             $items[] = $actorName . $actorFilms;
         }
         return $this->renderContent(Html::ol($items, ['encode' => false,]));
+    }
+
+    /**
+     * Example of customized Active Query class
+     */
+    public function actionIndex()
+    {
+        // Get Posts in application default language
+        $posts = Post::find()->lang()->all();
+
+        echo Html::tag('h1', 'Default Language');
+        foreach ($posts as $post) {
+            echo Html::tag('h2', $post->title);
+            echo $post->content;
+        }
+
+        // Get posts in German
+        $posts = Post::find()->lang('de')->all();
+        echo Html::tag('h1', 'German Language');
+        foreach ($posts as $post) {
+            echo Html::tag('h2', $post->title);
+            echo $post->content;
+        }
     }
 }
