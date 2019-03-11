@@ -2,13 +2,16 @@
 
 namespace app\controllers;
 
+use app\models\Post;
 use yii\filters\AccessControl;
 use yii\helpers\Html;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 
 class PostController extends Controller
 {
     public $pageTitle = 'Posts';
+
     public function actions()
     {
         return [
@@ -61,5 +64,16 @@ class PostController extends Controller
         return $this->renderContent(Html::tag('h2',
             'Hello, ' . Html::encode($name) . '!'
         ));
+    }
+
+
+    public function actionProcessFieldContent()
+    {
+        $post = new Post();
+        $post->title = 'links test';
+        $post->content = 'before http://www.yiiframework.com/ after';
+        $post->save();
+
+        return $this->renderContent(Html::tag('pre', VarDumper::dumpAsString($post->attributes)));
     }
 }
