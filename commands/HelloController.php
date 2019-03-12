@@ -7,6 +7,7 @@
 
 namespace app\commands;
 
+use app\models\User;
 use yii\console\Controller;
 use yii\console\ExitCode;
 use yii\helpers\FileHelper;
@@ -32,5 +33,21 @@ class HelloController extends Controller
         echo $message . "\n";
 
         return ExitCode::OK;
+    }
+
+    public function actionCreateAdmin($password = 'admin')
+    {
+        try {
+            $model = new User();
+            $model->first_name = 'MHD';
+            $model->last_name = 'Ahmad';
+            $model->username = 'admin';
+            $model->email = 'admin@example.com';
+            $model->setPassword($password);
+            $model->generateAuthKey();
+            $model->save();
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
     }
 }
