@@ -42,7 +42,7 @@ $('#product-category_id').on('change', function() {
 
 <div class="product-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['enableAjaxValidation' => true,]); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
