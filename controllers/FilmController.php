@@ -9,6 +9,9 @@
 namespace app\controllers;
 
 
+use app\models\User;
+use yii\filters\auth\HttpBasicAuth;
+use yii\helpers\ArrayHelper;
 use yii\rest\ActiveController;
 
 class FilmController extends ActiveController
@@ -22,8 +25,21 @@ class FilmController extends ActiveController
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        $behaviors['contentNegotiator']['formats']['application/xml'] = 'xml';
-        return $behaviors;
+        //$behaviors['contentNegotiator']['formats']['application/xml'] = 'xml';
+
+        // Use HTTP Basic Auth
+        return ArrayHelper::merge($behaviors, [
+            'authenticator' => [
+                'class' => HttpBasicAuth::className(),
+                'auth' => function ($username, $password) {
+                    $user = User::findByUsername($username);
+                    if (($user !== null) && $user->validatePassword($password)) {
+                        return $user;
+                    }
+                    return null;
+                }
+            ]
+        ]);
     }
 
 }
