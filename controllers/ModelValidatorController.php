@@ -71,5 +71,14 @@ class ModelValidatorController extends Controller
 
     }
 
-
+    public function actionIndex()
+    {
+        $model = new ArticleModel();
+        if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
+            \Yii::$app->session->setFlash('success', 'Model is valid');
+        }
+        return $this->render('index', [
+            'model' => $model,
+        ]);
+    }
 }
