@@ -22,9 +22,9 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'uIjeio_7EQfkCWTUizOtpPrmnCiBhCl7',
-            'parsers' => [
-                'application/json' => 'yii\web\JsonParser',
-            ]
+//            'parsers' => [
+//                'application/json' => 'yii\web\JsonParser',
+//            ]
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -57,14 +57,14 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'enableStrictParsing' => true,
-            'rules' => [
-                [
-                    'class' => 'yii\rest\UrlRule',
-                    'controller' => 'film',
+//            'enableStrictParsing' => true,
+//            'rules' => [
+//                [
+//                    'class' => 'yii\rest\UrlRule',
+//                    'controller' => 'film',
                     // Disable default controller-id pluralize
 //                    'pluralize' => false,
-                ],
+//                ],
 //               'home' => 'test/index',
 //               '<alias:about>' => 'test/page',
 //               'page/<alias>' => 'test/page',
@@ -72,7 +72,7 @@ $config = [
 //               '<type:(archive|posts)>' => 'post/index',
 //               '<type:(archive|posts)>/<order:(DESC|ASC)>' => 'post/index',
 //               'sayhello/<name>' => 'post/hello'
-            ],
+//            ],
         ],
 
     ],

@@ -2,10 +2,12 @@
 
 namespace app\controllers;
 
+use app\helpers\NumberHelper;
 use app\models\Article;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\filters\AccessControl;
+use yii\helpers\Html;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\Response;
@@ -169,5 +171,10 @@ class SiteController extends Controller
     {
         $this->layout = 'article';
         return $this->render('content');
+    }
+
+    public function actionHelper()
+    {
+        return $this->renderContent(Html::tag('h1', NumberHelper::format(18878334526.356)));
     }
 }
