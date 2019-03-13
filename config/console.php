@@ -17,6 +17,11 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'exchange' => [
+            'class' => 'app\components\Exchange',
+            'enableCaching' => true,
+            // 'authKey' => '',
+        ],
         'log' => [
             'targets' => [
                 [

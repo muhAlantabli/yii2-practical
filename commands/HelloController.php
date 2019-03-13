@@ -50,4 +50,10 @@ class HelloController extends Controller
             echo $e->getMessage();
         }
     }
+
+    public function actionExchange($currency)
+    {
+        echo \Yii::$app->exchange->getRate('USD', $currency) . PHP_EOL;
+        return ExitCode::OK;
+    }
 }
